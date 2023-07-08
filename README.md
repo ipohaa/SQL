@@ -2,10 +2,10 @@
 Выполнение простых запросов, соединений по критериям и решение задач с сайта [sql-ex.ru](https://sql-ex.ru/)
 _______________
 ### Быстрая навигация
-+ [Задачи с сайта SQL-EX](https://github.com/ipohaa/sql/tree/main/README.md#задачи-с-сайта-sql-ex)
-+ [Домашнее задание #1](https://github.com/ipohaa/sql/tree/main/README.md#домашняя-работа-1--sqlhomework1)
-+ [Создание таблиц](https://github.com/ipohaa/sql/tree/main/README.md#создание-таблиц-для-hw2--sqlhomework2)
-+ [Домашнее задание #2](https://github.com/ipohaa/sql/tree/main/README.md#домашняя-работа-2--sqlhomework2)
++ [Задачи с сайта SQL-EX](https://github.com/ipohaa/SQL#задачи-с-сайта-sql-ex--sqlsql-ex)
++ [Домашнее задание #1](https://github.com/ipohaa/sql#домашняя-работа-1--sqlhomework1)
++ [Создание таблиц](https://github.com/ipohaa/sql#создание-таблиц-для-hw2--sqlhomework2)
++ [Домашнее задание #2](https://github.com/ipohaa/sql#домашняя-работа-2--sqlhomework2)
 _______________
 
 ## Задачи с сайта SQL-EX / sql/[sql-ex](https://github.com/ipohaa/SQL/tree/main/sql-ex)
