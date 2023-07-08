@@ -1,8 +1,8 @@
 Домашнее задание на тему SQL  
-Выполнение простых запросов, соединений по критериям и решение задач с сайта [sql-ex.ru](https://sql-ex.ru/)
+Выполнение простых селектов и джоинов по критериям. Решение задач с сайта [sql-ex.ru](https://sql-ex.ru/)
 _______________
 ### Быстрая навигация
-+ [Задачи с сайта SQL-EX](https://github.com/ipohaa/SQL#задачи-с-сайта-sql-ex--sqlsql-ex) ссылка на файл [Link>>](https://github.com/ipohaa/SQL/blob/main/sql-ex/sql-ex.sql)
++ [Задачи с сайта SQL-EX](https://github.com/ipohaa/SQL/tree/main/sql-ex) ссылка на файл [Link>>](https://github.com/ipohaa/SQL/blob/main/sql-ex/sql-ex.sql)
 + [Домашнее задание #1](https://github.com/ipohaa/sql#домашняя-работа-1--sqlhomework1) ссылка на файл [Link>>](https://github.com/ipohaa/SQL/blob/main/homework1/SQL_HW1.sql)
 + [Создание таблиц](https://github.com/ipohaa/sql#создание-таблиц-для-hw2--sqlhomework2) ссылка на файл [Link>>](https://github.com/ipohaa/SQL/blob/main/homework2/SQL_DDL.sql)
 + [Домашнее задание #2](https://github.com/ipohaa/sql#домашняя-работа-2--sqlhomework2) ссылка на файл [Link>>](https://github.com/ipohaa/SQL/blob/main/homework2/SQL_HW2.sql)
