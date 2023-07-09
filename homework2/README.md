@@ -51,7 +51,7 @@
 ### 1. Создать таблицу `employees`
 id serial,  primary key,  
 employee_name Varchar(50), not null
-```
+```sql
 create table employees(
 	id serial primary key,
 	employee_name varchar(50) not null
@@ -59,7 +59,7 @@ create table employees(
 ```
 
 ### 2. Наполнить таблицу `*employees` 70 строками 
-```
+```sql
 insert into employees (employee_name)
 values ('Алиса Щербакова'),
 ('Максим Черкасов'),
@@ -146,14 +146,14 @@ values ('Алиса Щербакова'),
 ### 3. Создать таблицу `salary`
 id serial,  primary key,  
 monthly_salary int, not null, unique
-```
+```sql
 create table salary(
 	id serial primary key,
 	monthly_salary int not null unique
 );
 ```
 ### 4. Наполнить таблицу `*salary` данными 
-```
+```sql
 insert into  salary (monthly_salary)
 values (1000),(1100),(1200),(1300),(1400),(1500),(1600),(1700),(1800),(1900),(2000),(2100),(2200),(2300),(2400),(2500);
 ```
@@ -162,7 +162,7 @@ values (1000),(1100),(1200),(1300),(1400),(1500),(1600),(1700),(1800),(1900),(20
 id serial, primary key,  
 employee_id Int, not null, unique
 salary_id Int, not null
-```
+```sql
 create table employee_salary (
 	id serial primary key,
 	employee_id int not null unique,
@@ -171,26 +171,26 @@ create table employee_salary (
 ```
 ### 6. Наполнить таблицу `*employee_salary` 40 строками 
 в 10 строк из 40 вставить несуществующие employee_id
-```
+```sql
 insert into employee_salary (employee_id, salary_id)
 values (3,7),(1,4),(5,9),(40,13),(23,4),(11,2),(52,10),(15,13),(26,4),(16,1),(33,7);
 ```
 ### 7. Создать таблицу `roles`
 id serial, primary key,
 role_name Int, not null, unique
-```
+```sql
 create table roles (
 	id serial primary key,
 	role_name int not null unique
 );
 ```
 ### 8. Сменить тип данных в таблице `*roles` в столбце `role_name` на varchar(30)
-```
+```sql
 alter table roles
 alter column role_name type varchar(30);
 ```
 ### 9. Наполнить таблицу `*roles` 20 строками
-```
+```sql
 insert into roles (role_name)
 values ('Junior Python developer'),
 ('Middle Python developer'),
@@ -218,7 +218,7 @@ id serial, primary key,
 employee_id Int, not null, unique (внешний ключ для таблицы employees, поле id)
 role_id Int, not null (внешний ключ для таблицы roles, поле id)
 
-```
+```sql
 create table roles_employee(
 	id serial primary key,
 	employee_id int not null unique,
@@ -231,7 +231,7 @@ create table roles_employee(
 ```
 
 ### 11. Наполнить таблицу `*roles_employee` 40 строками
-```
+```sql
 insert into roles_employee (employee_id, role_id)
 values (7,2),
 (20,4),
@@ -249,7 +249,7 @@ values (7,2),
 ## Домашняя работа #2 / sql/[homework2]()
 
 ### 1. Вывести всех работников чьи зарплаты есть в базе, вместе с зарплатами.
-```
+```sql
 select employee_name, monthly_salary from employee_salary es
 	join employees e on es.employee_id = e.id
 	join salary s on es.salary_id = s.id
@@ -257,7 +257,7 @@ order by monthly_salary;
 
 ```
 ### 2. Вывести всех работников у которых ЗП меньше 2000
-```
+```sql
 select employee_name, monthly_salary from employee_salary es
 	join employees e on es.employee_id = e.id
 	join salary s on es.salary_id = s.id
@@ -266,35 +266,35 @@ order by monthly_salary;
 
 ```
 ### 3. Вывести все зарплатные позиции, но работник по ним не назначен. (ЗП есть, но не понятно кто её получает.)
-```
+```sql
 select employee_id, monthly_salary from employee_salary es
 	join salary s on es.salary_id = s.id
 where employee_id is null
 
 ```
 ### 4. Вывести все зарплатные позиции меньше 2000, работник по которым не назначен. (ЗП есть, но не понятно кто её получает.)
-```
+```sql
 select employee_id, monthly_salary from employee_salary es
 	join salary s on es.salary_id = s.id
 where employee_id is null and monthly_salary <2000;
 
 ```
 ### 5. Найти всех работников кому не начислена ЗП.
-```
+```sql
 select employee_name, salary_id from employee_salary es
 	join employees e on es.employee_id = e.id
 where salary_id is null;
 
 ```
 ### 6. Вывести всех работников с названиями их должности
-```
+```sql
 select employee_name, role_name from roles_employee re
 	join roles r on re.role_id = r.id
 	join employees e on re.employee_id = e.id
 
 ```
 ### 7. Вывести имена и должность только Java разработчиков.
-```
+```sql
 select employee_name, role_name from roles_employee re
 	join roles r on re.role_id = r.id
 	join employees e on re.employee_id = e.id
@@ -302,7 +302,7 @@ where role_name like '%Java%'
 
 ```
 ### 8. Вывести имена и должность только Python разработчиков.
-```
+```sql
 select employee_name, role_name from roles_employee re
 	join roles r on re.role_id = r.id
 	join employees e on re.employee_id = e.id
@@ -310,7 +310,7 @@ where role_name like '%Python%'
 
 ```
 ### 9. Вывести имена и должность только QA инженеров.
-```
+```sql
 select employee_name, role_name from roles_employee re
 	join roles r on re.role_id = r.id
 	join employees e on re.employee_id = e.id
@@ -318,7 +318,7 @@ where role_name like '%QA%'
 
 ```
 ### 10. Вывести имена и должность только ручных QA инженеров.
-```
+```sql
 select employee_name, role_name from roles_employee re
 	join roles r on re.role_id = r.id
 	join employees e on re.employee_id = e.id
@@ -326,7 +326,7 @@ where role_name like '%Manual%'
 
 ```
 ### 11. Вывести имена и должность только автоматизаторов QA.
-```
+```sql
 select employee_name, role_name from roles_employee re
 	join roles r on re.role_id = r.id
 	join employees e on re.employee_id = e.id
@@ -334,7 +334,7 @@ where role_name like '%Automation%'
 
 ```
 ### 12. Вывести имена и зарплаты Junior специалистов
-```
+```sql
 select employee_name, role_name, monthly_salary from roles_employee re
 	join employee_salary es on re.employee_id = es.employee_id
 	join roles r on re.role_id = r.id
@@ -344,7 +344,7 @@ where role_name like '%Junior%'
 
 ```
 ### 13. Вывести имена и зарплаты Middle специалистов
-```
+```sql
 select employee_name, role_name, monthly_salary from roles_employee re
 	join employee_salary es on re.employee_id = es.employee_id
 	join roles r on re.role_id = r.id
@@ -354,7 +354,7 @@ where role_name like '%Middle%'
 
 ```
 ### 14. Вывести имена и зарплаты Senior специалистов
-```
+```sql
 select employee_name, role_name, monthly_salary from roles_employee re
 	join employee_salary es on re.employee_id = es.employee_id
 	join roles r on re.role_id = r.id
@@ -364,7 +364,7 @@ where role_name like '%Senior%'
 
 ```
 ### 15. Вывести зарплаты Java разработчиков
-```
+```sql
 select role_name, monthly_salary from roles_employee re
 	join employee_salary es on re.employee_id = es.employee_id
 	join roles r on re.role_id = r.id
@@ -373,7 +373,7 @@ where role_name like '%Java %'
 
 ```
 ### 16. Вывести зарплаты Python разработчиков
-```
+```sql
 select role_name, monthly_salary from roles_employee re
 	join employee_salary es on re.employee_id = es.employee_id
 	join roles r on re.role_id = r.id
@@ -382,7 +382,7 @@ where role_name like '%Python%'
 
 ```
 ### 17. Вывести имена и зарплаты Junior Python разработчиков
-```
+```sql
 select employee_name, role_name, monthly_salary from roles_employee re
 	join employee_salary es on re.employee_id = es.employee_id
 	join roles r on re.role_id = r.id
@@ -392,7 +392,7 @@ where role_name like '%Middle Python%'
 
 ```
 ### 18. Вывести имена и зарплаты Middle JavaScript разработчиков
-```
+```sql
 select employee_name, role_name, monthly_salary from roles_employee re
 	join employee_salary es on re.employee_id = es.employee_id
 	join roles r on re.role_id = r.id
@@ -402,7 +402,7 @@ where role_name like '%Middle JavaScript%'
 
 ```
 ### 19. Вывести имена и зарплаты Senior Java разработчиков
-```
+```sql
 select employee_name, role_name, monthly_salary from roles_employee re
 	join employee_salary es on re.employee_id = es.employee_id
 	join roles r on re.role_id = r.id
@@ -412,7 +412,7 @@ where role_name like '%Senior Java %'
 
 ```
 ### 20. Вывести зарплаты Junior QA инженеров
-```
+```sql
 select role_name, monthly_salary from roles_employee re
 	join employee_salary es on re.employee_id = es.employee_id
 	join roles r on re.role_id = r.id
@@ -421,7 +421,7 @@ where role_name like '%Junior%QA%'
 
 ```
 ### 21. Вывести среднюю зарплату всех Junior специалистов
-```
+```sql
 select avg(monthly_salary) from roles_employee re
 	join employee_salary es on re.employee_id = es.employee_id
 	join roles r on re.role_id = r.id
@@ -431,7 +431,7 @@ where role_name like '%Junior%'
 
 ```
 ### 22. Вывести сумму зарплат JavaScript разработчиков
-```
+```sql
 select sum(monthly_salary) from roles_employee re
 	join employee_salary es on re.employee_id = es.employee_id
 	join roles r on re.role_id = r.id
@@ -441,7 +441,7 @@ where role_name like '%JavaScript%'
 
 ```
 ### 23. Вывести минимальную ЗП QA инженеров
-```
+```sql
 select min(monthly_salary) from roles_employee re
 	join employee_salary es on re.employee_id = es.employee_id
 	join roles r on re.role_id = r.id
@@ -451,7 +451,7 @@ where role_name like '%QA%'
 
 ```
 ### 24. Вывести максимальную ЗП QA инженеров
-```
+```sql
 select max(monthly_salary) from roles_employee re
 	join employee_salary es on re.employee_id = es.employee_id
 	join roles r on re.role_id = r.id
@@ -461,28 +461,28 @@ where role_name like '%QA%'
 
 ```
 ### 25. Вывести количество QA инженеров
-```
+```sql
 select count(role_name) from roles_employee re
 	join roles r on re.role_id = r.id
 where role_name like '%QA%'
 
 ```
 ### 26. Вывести количество Middle специалистов
-```
+```sql
 select count(role_name) from roles_employee re
 	join roles r on re.role_id = r.id
 where role_name like '%Middle%'
 
 ```
 ### 27. Вывести количество разработчиков
-```
+```sql
 select count(role_name) from roles_employee re
 	join roles r on re.role_id = r.id
 where role_name like '%developer%'
 
 ```
 ### 28. Вывести фонд (сумму) зарплаты разработчиков
-```
+```sql
 select sum(monthly_salary) from roles_employee re
 	join employee_salary es on re.employee_id = es.employee_id
 	join roles r on re.role_id = r.id
@@ -491,7 +491,7 @@ where role_name like '%developer%'
 
 ```
 ### 29. Вывести имена, должности и ЗП всех специалистов по возрастанию
-```
+```sql
 select employee_name, role_name, monthly_salary from roles_employee re
 	join employee_salary es on re.employee_id = es.employee_id
 	join roles r on re.role_id = r.id
@@ -501,7 +501,7 @@ order by monthly_salary;
 
 ```
 ### 30. Вывести имена, должности и ЗП всех специалистов по возрастанию у специалистов у которых ЗП от 1700 до 2300
-```
+```sql
 select employee_name, role_name, monthly_salary from roles_employee re
 	join employee_salary es on re.employee_id = es.employee_id
 	join roles r on re.role_id = r.id
@@ -512,7 +512,7 @@ order by monthly_salary;
 
 ```
 ### 31. Вывести имена, должности и ЗП всех специалистов по возрастанию у специалистов у которых ЗП меньше 2300
-```
+```sql
 select employee_name, role_name, monthly_salary from roles_employee re
 	join employee_salary es on re.employee_id = es.employee_id
 	join roles r on re.role_id = r.id
@@ -523,7 +523,7 @@ order by monthly_salary;
 
 ```
 ### 32. Вывести имена, должности и ЗП всех специалистов по возрастанию у специалистов у которых ЗП равна 1100, 1500, 2000
-```
+```sql
 select employee_name, role_name, monthly_salary from roles_employee re
 	join employee_salary es on re.employee_id = es.employee_id
 	join roles r on re.role_id = r.id
